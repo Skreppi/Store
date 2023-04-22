@@ -1,6 +1,6 @@
 import os
+
 import django
-from django.shortcuts import redirect
 from django.test import TestCase
 from django.urls import reverse
 
@@ -10,16 +10,16 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'store.settings')
 django.setup()
 
 
-# class HomeViewTestCase(TestCase):
-#
-#     def test_template(self):
-#         path = reverse('home')
-#         response = self.client.get(path)
-#
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response.context_data['title'], 'Store')
-#         self.assertEqual(response.template_name[0], 'products/home.html')
-#         self.assertTemplateUsed(response, 'products/home.html')
+class HomeViewTestCase(TestCase):
+
+    def test_template(self):
+        path = reverse('home')
+        response = self.client.get(path)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context_data['title'], 'Store')
+        self.assertEqual(response.template_name[0], 'products/home.html')
+        self.assertTemplateUsed(response, 'products/home.html')
 
 
 class ProductsListViewTestCase(TestCase):
@@ -31,4 +31,3 @@ class ProductsListViewTestCase(TestCase):
         products = Products.objects.all()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(list(response.context_data['object_list']), list(products))
-

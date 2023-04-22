@@ -17,33 +17,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Оплачен</td>
-                        <td>21 авг. 21 года</td>
-                        <td>5 070 руб.</td>
-                        <td>
-                            <a href="order.html">просмотреть</a>
-                        </td>
-                    </tr>
+                    {% for order in object_list %}
+                    {% if order.get_status_display == 'Оплачен'%}
+                    <tr class="table-warning">
+                    {% elif order.get_status_display == 'Доставлен'%}
                     <tr class="table-success">
-                        <th scope="row">2</th>
-                        <td>Досталвен</td>
-                        <td>16 июля 21 года</td>
-                        <td>4 876 руб.</td>
-                        <td>
-                            <a href="order.html">просмотреть</a>
-                        </td>
-                    </tr>
+                    {% elif order.get_status_display == 'В пути'%}
                     <tr class="table-info">
-                        <th scope="row">3</th>
-                        <td>В пути</td>
-                        <td>14 нояб. 21 года</td>
-                        <td>9 566 руб.</td>
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif%}
+                        <th scope="row">{{ order.id }}</th>
+                        <td>{{ order.get_status_display }}</td>
+                        <td>{{ order.created }}</td>
+                        <td>{{ order.basket_history.total_sum }} руб.</td>
                         <td>
                             <a href="order.html">просмотреть</a>
                         </td>
                     </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

@@ -25,7 +25,7 @@
                         <li>
                             <a class="dropdown-item" href="{% url 'profile' user.id %}">Профиль</a>
                         </li>
-                        <li><a class="dropdown-item" href="orders/orders.html">Заказы</a></li>
+                        <li><a class="dropdown-item" href="{% url 'orders' %}">Заказы</a></li>
                         <li><a class="dropdown-item" href="{% url 'admin:index' %}">Админ-панель</a></li>
                         <li>
                             <hr class="dropdown-divider">

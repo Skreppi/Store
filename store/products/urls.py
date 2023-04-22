@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from .views import (CategoriesView, HomeView, ProductsView, basket_add,
                     basket_remove)
